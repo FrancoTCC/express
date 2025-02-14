@@ -1,0 +1,13 @@
+name: Prueba num1 
+on:
+  push:
+    branch:
+     -main
+
+jobs:
+  decir-hola:
+    runs-on: ubunto:lastest
+
+    steps:
+     -anme: Mostar mensaje
+      run: echo "Hola mundo"
