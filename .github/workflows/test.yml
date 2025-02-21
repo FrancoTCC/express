@@ -1,13 +1,14 @@
-name: Prueba num1 
+name: Prueba num 1
+
 on:
   push:
-    branch:
-     -main
+    branches:
+      - main
 
 jobs:
   decir-hola:
-    runs-on: ubunto:lastest
+    runs-on: ubuntu-latest
 
     steps:
-     -anme: Mostar mensaje
-      run: echo "Hola mundo"
+      - name: Mostrar mensaje
+        run: echo "Hola mundo"
