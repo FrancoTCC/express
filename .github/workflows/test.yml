@@ -11,18 +11,20 @@ jobs:
     permissions:
       contents: read
       packages: write
-
+    environment: produccion
     steps:
       - name: Mostrar mensaje
         run: echo "Hola mundo"
       - name: Enviar Peticion
-        run: >
-          curl -X POST 'https://webhook.site/892f2749-aba3-44c8-af63-04640edf7a85' -H 'content-type: application/json' -d '{"nombre": "Fran"}'
+        run: |
+          curl -X POST 'https://webhook.site/892f2749-aba3-44c8-af63-04640edf7a85' \
+          -H 'content-type: application/json' \
+          -d '{"nombre": "Franco Taype"}'
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Logearnos en GHCR
-        run: docker login ghcr.io -u ${{ github.actor }} -p ${{ secrets.TOKEN }}
-      - name: Crear Contenedor
-        run: docker build . -t ghcr.io/FrancoTCC/express-image:latest
+        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u francotcc --password-stdin
+      - name: Crear imagen
+        run: docker build . -t ghcr.io/francotcc/express-image:latest
       - name: Desplegar imagen
-        run: docker push ghcr.io/FrancoTCC/express-image:latest
+        run: docker push ghcr.io/francotcc/express-image:latest
