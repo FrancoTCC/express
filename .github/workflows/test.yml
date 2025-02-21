@@ -9,7 +9,7 @@ jobs:
     permissions:
       contents: read
       packages: write
-    environment: production
+    environment: produccion
     steps:
       - name: Show message
         run: echo "Hello world"
