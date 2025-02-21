@@ -8,6 +8,9 @@ on:
 jobs:
   decir-hola:
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: white
 
     steps:
       - name: Mostrar mensaje
@@ -15,3 +18,11 @@ jobs:
       - name: Enviar Peticion
         run: >
           curl -X POST 'https://webhook.site/892f2749-aba3-44c8-af63-04640edf7a85' -H 'content-type: application/json' -d '{"nombre": "Fran"}'
+      - name: Checkout repository
+        run: actions/checkout@v4
+      - name: Logearnos en GHCR
+        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u FrancoTCC --password-stdin
+      - name: Crear Contenedor
+        run: docker build . -t ghcr.io/FrancoTCC/express-image:latest
+      - name: Desplegar imagen
+        run: docker push ghcr.io/FrancoTCC/express-image:latest
