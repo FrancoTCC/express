@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      packages: white
+      packages: write
 
     steps:
       - name: Mostrar mensaje
