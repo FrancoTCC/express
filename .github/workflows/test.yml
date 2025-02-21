@@ -21,8 +21,8 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
       - name: Login on GHCR
-        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u FrancoTCC --password-stdin
+        run: echo "${{ secrets.TOKEN }}" | docker login ghcr.io -u francotcc --password-stdin
       - name: Up Docker Container
-        run: docker build . -t ghcr.io/FrancoTCC/express-image:latest
+        run: docker build . -t ghcr.io/francotcc/express-image:latest
       - name: Push image
-        run: docker push ghcr.io/FrancoTCC/express-image:latest
+        run: docker push ghcr.io/francotcc/express-image:latest
